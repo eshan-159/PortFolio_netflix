@@ -1,0 +1,104 @@
+/* Certifications.css */
+
+.certifications-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 10rem 1rem;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(0, 0, 1, 0.9) 10%, rgba(20, 20, 20, 0.9) 100%);
+  background-size: 200% 200%;
+  color: #fff;
+  animation: backgroundShift 10s ease-in-out infinite;
+}
+
+.certifications-title {
+  font-size: 2.5rem;
+  color: #e50914; /* Netflix red */
+  font-weight: bold;
+  margin-bottom: 2rem;
+  animation: slideDown 0.8s ease-in-out forwards;
+  transform: translateY(-20px);
+  opacity: 0;
+  text-transform: uppercase;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+  justify-items: center;
+}
+
+.certification-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(50px) rotate(-2deg) scale(0.95); /* Subtle rotation and scale */
+  animation: cardFadeIn 0.6s forwards ease-in-out;
+  animation-delay: var(--delay); /* Staggered animation for grid layout */
+}
+
+.certification-card:hover {
+  transform: scale(1.08) rotate(0deg); /* Zoom and straight hover */
+  box-shadow: 0 10px 25px rgba(229, 9, 20, 0.4); /* Netflix red shadow */
+}
+
+.certification-content {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.certification-icon {
+  font-size: 2rem;
+  color: #4a90e2;
+  margin-bottom: 0.5rem;
+}
+
+.certification-link {
+  font-size: 1.5rem;
+  color: #e50914; /* Netflix red */
+  transition: transform 0.2s ease;
+}
+
+.certification-card:hover .certification-link {
+  transform: scale(1.2);
+}
+
+.issued-date {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+/* Background animation */
+@keyframes backgroundShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Slide-down title animation */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Staggered card fade-in with rotation */
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(50px) rotate(-2deg) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+}

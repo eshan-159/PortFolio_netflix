@@ -1,0 +1,31 @@
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff; 
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: grey; /* Darker shade for hover */
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spacer {
+  width: 1rem;
+}
+
+.label {
+  font-size: 1rem;
+  color: black;
+}

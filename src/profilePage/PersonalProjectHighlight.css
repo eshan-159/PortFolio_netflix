@@ -1,0 +1,107 @@
+.personal-project-section {
+  margin: 20px 0 40px;
+  padding: 0 20px;
+}
+
+.personal-project-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  min-height: 260px;
+}
+
+.personal-project-card {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  width: clamp(260px, 30vw, 340px);
+  height: 300px;
+  transform-origin: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.35s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.personal-project-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.personal-project-card .card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.personal-project-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.personal-project-card .role {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #e50914;
+  font-weight: 600;
+}
+
+.personal-project-card .duration {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #b3b3b3;
+}
+
+.personal-project-card .hover-description {
+  margin: 12px 0 0;
+  font-size: 0.8rem;
+  color: #a7a7a7;
+  line-height: 1.4;
+}
+
+.personal-project-card:hover {
+  transform: scale(1.05) translateY(-8px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.75);
+  border-color: rgba(229, 9, 20, 0.4);
+}
+
+.personal-project-card:focus-visible {
+  outline: 3px solid rgba(229, 9, 20, 0.75);
+  outline-offset: 6px;
+}
+
+.personal-project-section .ranking-number {
+  position: absolute;
+  left: clamp(0px, 4vw, 40px);
+  bottom: -10px;
+  font-size: clamp(150px, 18vw, 220px);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  z-index: 1;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .personal-project-section {
+    padding: 0 10px;
+  }
+
+  .personal-project-card {
+    width: 100%;
+  }
+
+  .personal-project-section .ranking-number {
+    left: 10px;
+  }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 160" width="600" height="160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ESHAN logo">
+  <defs>
+    <!-- Gentler arc for shorter word; keeps letters tight and centered -->
+    <path id="curve" d="M 40 110 C 200 80, 400 80, 560 110" />
+  </defs>
+  <use href="#curve" fill="none" stroke="none" />
+  <text fill="#E50914" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="88" letter-spacing="2">
+    <textPath href="#curve" startOffset="50%" text-anchor="middle">ESHAN</textPath>
+  </text>
+</svg>
+
+

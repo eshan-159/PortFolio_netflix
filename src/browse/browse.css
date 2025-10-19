@@ -1,0 +1,31 @@
+.browse-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #141414;
+}
+
+.who-is-watching {
+  color: #fff;
+    font-size: 3.5vw;
+    font-weight: unset;
+    width: 100%;
+    text-align: center;
+}
+
+.profiles {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 10rem;
+  justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+  .who-is-watching {
+    font-size: 30px;
+  }
+}

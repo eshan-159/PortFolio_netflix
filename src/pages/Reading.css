@@ -1,0 +1,108 @@
+/* Reading.css */
+
+.reading-container {
+  padding: 5rem 2rem;
+  color: #333;
+  text-align: center;
+  /* background: linear-gradient(to bottom right, #fdfbfb, #ebedee); */
+}
+
+.reading-title {
+  font-size: 2.5rem;
+  color: #ff6f61;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  animation: slideDown 0.8s ease-in-out;
+}
+
+.reading-intro {
+  font-size: 1.1rem;
+  color:white;
+  margin-bottom: 2rem;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.book-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  animation: popUp 2s ease forwards;
+}
+
+.book-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05); /* Zoom-in effect */
+  box-shadow: 0rem 0rem 20rem 20px rgba(211, 29, 29, 0.4)
+}
+
+.book-cover {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.book-info {
+  padding: 1rem;
+}
+
+.book-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.book-author {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.book-description {
+  font-size: 0.9rem;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.book-card:hover .book-description {
+  color: #ff6f61;
+}
+
+/* Telugu books */
+.book-title:lang(te) {
+  font-family: 'Noto Sans Telugu', sans-serif;
+  color: #4a90e2;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

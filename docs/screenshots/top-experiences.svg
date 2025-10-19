@@ -1,0 +1,47 @@
+<svg width="960" height="540" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Top Experiences Showcase</title>
+  <desc id="desc">Stylised preview of the Top Experiences carousel featuring TEXMiN and Vyomchara internship cards.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050505" />
+      <stop offset="100%" stop-color="#141414" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="rgba(0,0,0,0.45)" />
+    </filter>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)" rx="32" />
+  <text x="60" y="120" fill="#ffffff" font-family="'Netflix Sans', 'Segoe UI', sans-serif" font-size="48" font-weight="700">Top Experiences</text>
+  <g transform="translate(60 180)">
+    <g transform="translate(0 0)">
+      <text x="-10" y="280" font-size="210" font-weight="900" fill="rgba(255,255,255,0.04)">1</text>
+      <g filter="url(#shadow)">
+        <rect x="70" y="0" width="260" height="320" rx="18" fill="rgba(32,32,32,0.92)" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+        <rect x="70" y="0" width="260" height="160" rx="18 18 0 0" fill="#f4f4f4" />
+        <path d="M110 90 L160 40 L210 90" stroke="#e50914" stroke-width="10" fill="none" stroke-linecap="round" />
+        <circle cx="160" cy="90" r="22" fill="#e50914" opacity="0.8" />
+        <g transform="translate(90 190)" fill="#ffffff" font-family="'Netflix Sans','Segoe UI',sans-serif">
+          <text font-size="22" font-weight="700">TEXMiN</text>
+          <text y="34" font-size="16" fill="#ff2c31" font-weight="600">AIML Intern</text>
+          <text y="66" font-size="14" fill="#b3b3b3">June 2025 – July 2025</text>
+          <text y="104" font-size="12" fill="#888888">AvatarGPT · realtime LLM avatar stack</text>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(340 0)">
+      <text x="-10" y="280" font-size="210" font-weight="900" fill="rgba(255,255,255,0.04)">2</text>
+      <g filter="url(#shadow)">
+        <rect x="70" y="0" width="260" height="320" rx="18" fill="rgba(32,32,32,0.92)" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+        <rect x="70" y="0" width="260" height="160" rx="18 18 0 0" fill="#060716" />
+        <path d="M120 80 C140 40 190 40 210 80" stroke="#6b8cff" stroke-width="12" fill="none" stroke-linecap="round" />
+        <path d="M140 120 Q180 60 220 120" stroke="#2734ff" stroke-width="8" fill="none" />
+        <g transform="translate(90 190)" fill="#ffffff" font-family="'Netflix Sans','Segoe UI',sans-serif">
+          <text font-size="22" font-weight="700">Vyomchara</text>
+          <text y="34" font-size="16" fill="#ff2c31" font-weight="600">AIML Intern</text>
+          <text y="66" font-size="14" fill="#b3b3b3">July 2025 – Sept 2025</text>
+          <text y="104" font-size="12" fill="#888888">Indian Sign Language chatbot</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

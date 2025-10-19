@@ -1,0 +1,34 @@
+.intro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.video-wrapper {
+  width: 800px;
+  max-width: 90vw;
+  aspect-ratio: 16/9;
+  position: relative;
+}
+
+.intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;  /* Prevents user interaction with video */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .video-wrapper {
+    width: 100%;
+    max-width: 600px;
+  }
+}
