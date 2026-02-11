@@ -86,11 +86,21 @@ const Projects: React.FC = () => {
             style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}
             role="button"
             tabIndex={0}
-            onClick={() => navigate('/project/deepfake-detector')}
+            onClick={() => {
+              if (project.github) {
+                window.open(project.github, '_blank', 'noopener,noreferrer');
+              } else {
+                navigate('/project/deepfake-detector');
+              }
+            }}
             onKeyDown={(event) => {
               if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
-                navigate('/project/deepfake-detector');
+                if (project.github) {
+                  window.open(project.github, '_blank', 'noopener,noreferrer');
+                } else {
+                  navigate('/project/deepfake-detector');
+                }
               }
             }}
           >
@@ -105,6 +115,11 @@ const Projects: React.FC = () => {
                   </span>
                 ))}
               </div>
+              {project.github && (
+                <div className="github-link">
+                  <FaGithub /> View on GitHub
+                </div>
+              )}
             </div>
           </div>
         ))}

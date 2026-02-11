@@ -92,3 +92,27 @@
   margin-right: 5px;
   font-size: 1.2rem;
 }
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #e50914;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.github-link svg {
+  font-size: 1.1rem;
+}
+
+.project-card:hover .github-link {
+  background: #f40612;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.5);
+}
