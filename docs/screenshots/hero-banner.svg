@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#141414;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#bg)"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="1200" height="70" fill="#000000" opacity="0.8"/>
+  <text x="50" y="45" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#e50914">ESHAN</text>
+  <text x="200" y="45" font-family="Arial, sans-serif" font-size="16" fill="#e5e5e5">Home</text>
+  <text x="280" y="45" font-family="Arial, sans-serif" font-size="16" fill="#e5e5e5">Professional</text>
+  <text x="400" y="45" font-family="Arial, sans-serif" font-size="16" fill="#e5e5e5">Skills</text>
+  <text x="480" y="45" font-family="Arial, sans-serif" font-size="16" fill="#e5e5e5">Projects</text>
+  <circle cx="1130" cy="35" r="22" fill="#4169e1"/>
+  
+  <!-- Title Section -->
+  <text x="60" y="140" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#e5e5e5">Top Experiences</text>
+  
+  <!-- Experience Card 1 with Ranking -->
+  <g transform="translate(60, 180)">
+    <!-- Ranking Number -->
+    <text x="0" y="220" font-family="Arial Black, sans-serif" font-size="180" font-weight="900" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.15">1</text>
+    <!-- Card -->
+    <rect x="85" y="20" width="170" height="255" rx="6" fill="url(#cardGrad)" stroke="#333" stroke-width="1"/>
+    <!-- Image placeholder -->
+    <rect x="85" y="20" width="170" height="145" rx="6" fill="#3a3a3a"/>
+    <text x="170" y="100" font-family="Arial, sans-serif" font-size="40" fill="#666" text-anchor="middle">🏢</text>
+    <!-- Card Content -->
+    <text x="170" y="190" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#e5e5e5" text-anchor="middle">TEXMiN</text>
+    <text x="170" y="210" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#e50914" text-anchor="middle">AIML INTERN</text>
+    <text x="170" y="228" font-family="Arial, sans-serif" font-size="12" fill="#a3a3a3" text-anchor="middle">June 2025 – July 2025</text>
+  </g>
+  
+  <!-- Experience Card 2 with Ranking -->
+  <g transform="translate(340, 180)">
+    <!-- Ranking Number -->
+    <text x="0" y="220" font-family="Arial Black, sans-serif" font-size="180" font-weight="900" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.15">2</text>
+    <!-- Card -->
+    <rect x="85" y="20" width="170" height="255" rx="6" fill="url(#cardGrad)" stroke="#333" stroke-width="1"/>
+    <!-- Image placeholder -->
+    <rect x="85" y="20" width="170" height="145" rx="6" fill="#3a3a3a"/>
+    <text x="170" y="100" font-family="Arial, sans-serif" font-size="40" fill="#666" text-anchor="middle">🚀</text>
+    <!-- Card Content -->
+    <text x="170" y="190" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#e5e5e5" text-anchor="middle">Vyomchara</text>
+    <text x="170" y="210" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#e50914" text-anchor="middle">AIML INTERN</text>
+    <text x="170" y="228" font-family="Arial, sans-serif" font-size="12" fill="#a3a3a3" text-anchor="middle">July 2025 – Sept 2025</text>
+  </g>
+  
+  <!-- More Cards Indicator -->
+  <text x="620" y="340" font-family="Arial, sans-serif" font-size="48" fill="#444">...</text>
+  
+  <!-- Bottom Section - Skills Grid Preview -->
+  <text x="60" y="500" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#e5e5e5">Skills & Technologies</text>
+  
+  <!-- Skill Pills -->
+  <rect x="60" y="520" width="100" height="35" rx="18" fill="#e50914"/>
+  <text x="110" y="543" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">React</text>
+  
+  <rect x="170" y="520" width="120" height="35" rx="18" fill="#e50914"/>
+  <text x="230" y="543" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">TypeScript</text>
+  
+  <rect x="300" y="520" width="130" height="35" rx="18" fill="#e50914"/>
+  <text x="365" y="543" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">TensorFlow</text>
+  
+  <rect x="440" y="520" width="90" height="35" rx="18" fill="#e50914"/>
+  <text x="485" y="543" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">Python</text>
+  
+  <rect x="540" y="520" width="80" height="35" rx="18" fill="#e50914"/>
+  <text x="580" y="543" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">AI/ML</text>
+</svg>
