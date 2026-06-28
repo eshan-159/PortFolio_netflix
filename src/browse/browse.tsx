@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import blueImage from '../images/blue.png';
+import greyImage from '../images/grey.png';
 import './browse.css';
-
-const PHOTO = '/profile-eshan.png';
 
 const Browse: React.FC = () => {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ const Browse: React.FC = () => {
       <div className="ws-row">
         <button className="ws-tile" onClick={() => go('recruiter')}>
           <div className="ws-img">
-            <img className="photo" src={PHOTO} alt="Recruiter" />
+            <img className="avatar" src={greyImage} alt="Recruiter" />
           </div>
           <span>Recruiter</span>
         </button>
