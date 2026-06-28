@@ -78,6 +78,20 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
+      {/* mobile-only category pills (Netflix-app style) */}
+      <div className={`navbar-pills ${isScrolled ? 'scrolled' : ''}`}>
+        {links
+          .filter((l) => l.id !== 'top')
+          .map((l) => (
+            <button key={l.id} type="button" onClick={() => goTo(l.id)}>
+              {l.label}
+            </button>
+          ))}
+        <a href={contact.resumeUrl} target="_blank" rel="noreferrer">
+          Résumé
+        </a>
+      </div>
+
       <div
         className={`sidebar-overlay ${isSidebarOpen ? 'open' : ''}`}
         onClick={() => setIsSidebarOpen(false)}

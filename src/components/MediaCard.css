@@ -204,14 +204,53 @@
 }
 
 @media (max-width: 768px) {
+  /* Netflix-mobile look: portrait poster, title overlaid, no text block below */
   .media-card {
-    width: 200px;
+    width: 33vw;
+    max-width: 160px;
+    border-radius: 10px;
   }
+  .media-poster {
+    aspect-ratio: 2 / 3;
+  }
+  .poster-shade {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(8, 8, 12, 0.96) 100%);
+  }
+  .media-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 12px;
+    z-index: 3;
+  }
+  .media-sub,
+  .media-tags,
+  .play-dot {
+    display: none;
+  }
+  .media-info h3 {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+  .pill.match {
+    display: none;
+  }
+  .pill.maturity {
+    font-size: 9.5px;
+    padding: 3px 7px;
+  }
+  .poster-logo {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
   .media-cell.numbered {
-    padding-left: 46px;
+    padding-left: 40px;
   }
   .rank-digit {
-    font-size: 140px;
-    left: -10px;
+    font-size: clamp(110px, 30vw, 150px);
+    left: -6px;
+    bottom: 12px;
   }
 }

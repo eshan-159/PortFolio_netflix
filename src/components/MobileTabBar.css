@@ -1,0 +1,43 @@
+.mobile-tabbar {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .mobile-tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 80;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    padding: 8px 6px calc(8px + env(safe-area-inset-bottom, 0px));
+    background: rgba(8, 8, 12, 0.86);
+    border-top: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+  }
+  .mobile-tabbar button {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--nf-dim);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.2s var(--ease);
+  }
+  .mobile-tabbar button svg {
+    font-size: 18px;
+  }
+  .mobile-tabbar button:active,
+  .mobile-tabbar button:focus {
+    color: #fff;
+  }
+}

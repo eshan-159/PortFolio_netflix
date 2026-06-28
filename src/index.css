@@ -60,3 +60,10 @@ a {
     var(--nf-bg);
   min-height: 100vh;
 }
+
+/* leave room for the fixed bottom tab bar on mobile */
+@media (max-width: 880px) {
+  .site-footer {
+    padding-bottom: calc(40px + 64px + env(safe-area-inset-bottom, 0px));
+  }
+}

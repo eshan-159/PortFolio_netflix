@@ -114,20 +114,59 @@
 
 .hamburger,
 .sidebar-overlay,
-.sidebar {
+.sidebar,
+.navbar-pills {
   display: none;
 }
 
 @media (max-width: 880px) {
+  .navbar {
+    padding: 12px 16px;
+  }
   .navbar-links,
   .nav-resume,
-  .nav-hire {
+  .nav-hire,
+  .hamburger {
     display: none;
   }
 
-  .hamburger {
-    display: block;
+  /* Netflix-app style category pills under the top bar */
+  .navbar-pills {
+    display: flex;
+    gap: 8px;
+    position: fixed;
+    top: 52px;
+    left: 0;
+    right: 0;
+    z-index: 49;
+    padding: 8px 14px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    background: linear-gradient(180deg, rgba(10, 10, 14, 0.92), rgba(10, 10, 14, 0));
+  }
+  .navbar-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .navbar-pills.scrolled {
+    background: rgba(10, 10, 14, 0.82);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+  }
+  .navbar-pills button,
+  .navbar-pills a {
+    flex: 0 0 auto;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border-strong);
+    padding: 7px 15px;
+    border-radius: 999px;
     cursor: pointer;
+    font-family: inherit;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
   .hamburger div {
     width: 24px;
