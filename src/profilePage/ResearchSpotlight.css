@@ -1,0 +1,116 @@
+.research-spotlight {
+  margin: 48px 0;
+}
+
+.research-billboard {
+  position: relative;
+  margin: 0 clamp(16px, 4vw, 56px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--glass-border-strong);
+  box-shadow: var(--shadow-pop);
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+}
+
+.research-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 8s var(--ease);
+}
+.research-billboard:hover .research-bg {
+  transform: scale(1.12);
+}
+
+.research-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8, 8, 12, 0.95) 18%, rgba(8, 8, 12, 0.55) 60%, rgba(8, 8, 12, 0.2)),
+    linear-gradient(0deg, rgba(229, 9, 20, 0.18), transparent 60%);
+}
+
+.research-inner {
+  position: relative;
+  max-width: 660px;
+  padding: clamp(26px, 4vw, 50px);
+}
+
+.research-flag {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #ffd0d3;
+}
+
+.research-title {
+  margin: 12px 0 8px;
+  font-size: clamp(24px, 3.4vw, 40px);
+  font-weight: 900;
+  line-height: 1.08;
+  color: #fff;
+}
+
+.research-authors {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--nf-muted);
+}
+
+.research-summary {
+  margin: 0 0 22px;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
+  color: #e3e3e8;
+}
+
+.research-metrics {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.r-metric {
+  display: flex;
+  flex-direction: column;
+}
+.r-metric strong {
+  font-size: 20px;
+  color: #fff;
+}
+.r-metric span {
+  font-size: 11.5px;
+  color: var(--nf-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.research-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.research-btn {
+  padding: 12px 26px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 15px;
+  background: #fff;
+  color: #0a0a0a;
+  transition: transform 0.2s var(--ease);
+}
+.research-btn:hover {
+  transform: translateY(-2px);
+}
+.research-note {
+  font-size: 12px;
+  color: var(--nf-dim);
+}

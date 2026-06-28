@@ -1,74 +1,110 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaHome, FaBriefcase, FaTools, FaProjectDiagram, FaEnvelope } from 'react-icons/fa'; // Import icons
+import { Link, useNavigate } from 'react-router-dom';
+import { FaHome, FaProjectDiagram, FaBriefcase, FaFlask, FaTools, FaEnvelope, FaFilePdf } from 'react-icons/fa';
 import './Navbar.css';
 import netflixLogo from '../images/logo-eshan.svg';
 import blueImage from '../images/blue.png';
+import { contact } from '../data/portfolio';
+
+const links = [
+  { label: 'Home', id: 'top', icon: <FaHome /> },
+  { label: 'Projects', id: 'projects', icon: <FaProjectDiagram /> },
+  { label: 'Experience', id: 'experience', icon: <FaBriefcase /> },
+  { label: 'Research', id: 'research', icon: <FaFlask /> },
+  { label: 'Skills', id: 'skills', icon: <FaTools /> },
+];
 
 const Navbar: React.FC = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const profileImage = location.state?.profileImage || blueImage;
-
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 80);
-  };
 
   useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const closeSidebar = () => {
+  const goTo = (id: string) => {
     setIsSidebarOpen(false);
+    if (id === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      navigate('/profile/recruiter');
+    }
   };
 
   return (
     <>
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="navbar-left">
-          <Link to="/" className="navbar-logo">
-            <img src={netflixLogo} alt="Netflix" />
+          <Link to="/browse" className="navbar-logo">
+            <img src={netflixLogo} alt="Eshan" />
           </Link>
           <ul className="navbar-links">
-            <li><Link to="/browse">Home</Link></li>
-            <li><Link to="/work-experience">Professional</Link></li>
-            <li><Link to="/skills">Skills</Link></li>
-            <li><Link to="/projects">Projects</Link></li>
-            <li><Link to="/contact-me">Hire Me</Link></li>
+            {links.map((l) => (
+              <li key={l.id}>
+                <button type="button" onClick={() => goTo(l.id)}>
+                  {l.label}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
+
         <div className="navbar-right">
-          {/* Hamburger menu for mobile */}
-          <div className="hamburger" onClick={toggleSidebar}>
+          <a className="nav-resume" href={contact.resumeUrl} target="_blank" rel="noreferrer">
+            Résumé
+          </a>
+          <a className="nav-hire" href={`mailto:${contact.email}`}>
+            Hire Me
+          </a>
+          <div className="hamburger" onClick={() => setIsSidebarOpen((o) => !o)}>
             <div></div>
             <div></div>
             <div></div>
           </div>
-          <img src={profileImage} alt="Profile" className="profile-icon" onClick={() => { navigate('/browse') }} />
+          <img
+            src={blueImage}
+            alt="Profile"
+            className="profile-icon"
+            onClick={() => navigate('/browse')}
+          />
         </div>
       </nav>
 
-      {/* Sidebar Overlay */}
-      <div className={`sidebar-overlay ${isSidebarOpen ? 'open' : ''}`} onClick={closeSidebar}></div>
+      <div
+        className={`sidebar-overlay ${isSidebarOpen ? 'open' : ''}`}
+        onClick={() => setIsSidebarOpen(false)}
+      ></div>
 
-      {/* Sidebar (only visible on mobile) */}
       <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-logo">
-          <img src={netflixLogo} alt="Netflix Logo" />
+          <img src={netflixLogo} alt="Eshan" />
         </div>
         <ul>
-          <li><Link to="/browse" onClick={closeSidebar}><FaHome /> Home</Link></li>
-          <li><Link to="/work-experience" onClick={closeSidebar}><FaBriefcase /> Professional</Link></li>
-          <li><Link to="/skills" onClick={closeSidebar}><FaTools /> Skills</Link></li>
-          <li><Link to="/projects" onClick={closeSidebar}><FaProjectDiagram /> Projects</Link></li>
-          <li><Link to="/contact-me" onClick={closeSidebar}><FaEnvelope /> Hire Me</Link></li>
+          {links.map((l) => (
+            <li key={l.id}>
+              <button type="button" onClick={() => goTo(l.id)}>
+                {l.icon} {l.label}
+              </button>
+            </li>
+          ))}
+          <li>
+            <a href={contact.resumeUrl} target="_blank" rel="noreferrer">
+              <FaFilePdf /> Résumé
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${contact.email}`}>
+              <FaEnvelope /> Hire Me
+            </a>
+          </li>
         </ul>
       </div>
     </>

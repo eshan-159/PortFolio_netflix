@@ -1,12 +1,62 @@
+:root {
+  /* Netflix core */
+  --nf-red: #e50914;
+  --nf-red-deep: #b81d24;
+  --nf-black: #0a0a0a;
+  --nf-bg: #0b0b0f;
+  --nf-text: #f5f5f7;
+  --nf-muted: #b3b3b3;
+  --nf-dim: #8c8c91;
+
+  /* Apple-glass surfaces */
+  --glass-bg: rgba(22, 22, 28, 0.55);
+  --glass-bg-strong: rgba(18, 18, 24, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-border-strong: rgba(255, 255, 255, 0.18);
+  --glass-blur: saturate(180%) blur(22px);
+
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.55);
+  --shadow-pop: 0 40px 90px rgba(0, 0, 0, 0.7);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: 'Netflix Sans',Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+  font-family: 'Netflix Sans', 'Helvetica Neue', 'SF Pro Display', Segoe UI, Roboto, Ubuntu, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #141414;
+  background-color: var(--nf-bg);
+  color: var(--nf-text);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+a {
+  color: inherit;
+}
+
+.content {
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(229, 9, 20, 0.12), transparent 60%),
+    var(--nf-bg);
+  min-height: 100vh;
 }

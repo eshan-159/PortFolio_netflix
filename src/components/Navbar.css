@@ -1,6 +1,3 @@
-/* Navbar.css */
-
-/* Main Navbar Styling */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -9,170 +6,197 @@
   position: fixed;
   width: 100%;
   top: 0;
-  background-image: linear-gradient(180deg, rgb(0 0 1 / 90%) 10%, transparent 100%);
-  padding: 20px;
-  z-index: 3;
-  transition: background-color 0.3s ease;
+  left: 0;
+  padding: 16px clamp(16px, 4vw, 56px);
+  z-index: 50;
+  background: linear-gradient(180deg, rgba(0, 0, 1, 0.85) 0%, transparent 100%);
+  transition: background 0.35s var(--ease), backdrop-filter 0.35s var(--ease), padding 0.35s var(--ease);
 }
 
 .navbar.scrolled {
-  background-color: #141414; /* Netflix black when scrolled */
+  background: rgba(10, 10, 14, 0.72);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
-.navbar-left, .navbar-right {
+.navbar-left,
+.navbar-right {
   display: flex;
   align-items: center;
+  gap: 22px;
 }
 
 .navbar-logo img {
-  height: 30px;
-  margin-right: 30px;
-  margin-left: 10px;
-  margin-top: 5px;
+  height: 28px;
+  display: block;
 }
 
-/* Navbar Links */
 .navbar-links {
   display: flex;
   list-style: none;
-  gap: 20px;
+  gap: 22px;
   padding: 0;
   margin: 0;
 }
 
-.navbar-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.05rem;
-  transition: color 0.3s;
-}
-
-.navbar-links li a:hover {
-  color: #e50914; /* Netflix red */
-}
-
-/* Profile Icon */
-.profile-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 15%;
-  transition: transform 0.3s;
-  margin-right: 3rem;
+.navbar-links button {
+  background: none;
+  border: none;
+  color: #e7e7ee;
+  font-size: 14.5px;
+  font-weight: 500;
   cursor: pointer;
+  padding: 4px 0;
+  position: relative;
+  transition: color 0.25s var(--ease);
+  font-family: inherit;
+}
+.navbar-links button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: var(--nf-red);
+  transition: width 0.25s var(--ease);
+}
+.navbar-links button:hover {
+  color: #fff;
+}
+.navbar-links button:hover::after {
+  width: 100%;
 }
 
-/* Hide the hamburger and sidebar in desktop view */
+.nav-resume,
+.nav-hire {
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: transform 0.2s var(--ease), background 0.2s var(--ease);
+}
+.nav-resume {
+  color: #fff;
+  border: 1px solid var(--glass-border-strong);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.nav-resume:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+}
+.nav-hire {
+  color: #fff;
+  background: var(--nf-red);
+}
+.nav-hire:hover {
+  transform: translateY(-2px);
+  background: var(--nf-red-deep);
+}
+
+.profile-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.2s var(--ease);
+}
+.profile-icon:hover {
+  transform: scale(1.08);
+}
+
 .hamburger,
 .sidebar-overlay,
 .sidebar {
   display: none;
 }
 
-/* Mobile-specific styling */
-@media (max-width: 768px) {
-  .navbar-logo img {
-    height: 20px;
-    margin-right: auto;
-  }
-  .profile-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-
-  /* Hide Navbar Links in Mobile */
-  .navbar-links {
+@media (max-width: 880px) {
+  .navbar-links,
+  .nav-resume,
+  .nav-hire {
     display: none;
   }
 
-  /* Show Hamburger Menu */
   .hamburger {
     display: block;
     cursor: pointer;
   }
-
   .hamburger div {
-    width: 25px;
-    height: 3px;
+    width: 24px;
+    height: 2.5px;
     background-color: #fff;
-    margin: 4px;
+    margin: 5px 0;
+    border-radius: 2px;
     transition: 0.3s;
   }
 
-  /* Sidebar Overlay */
   .sidebar-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 3;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 60;
     display: none;
   }
-
   .sidebar-overlay.open {
     display: block;
   }
 
-  /* Sidebar Styling */
   .sidebar {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     height: 100%;
-    width: 70%;
-    background-color: #141414;
+    width: 76%;
+    max-width: 320px;
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    border-left: 1px solid var(--glass-border-strong);
     color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 4;
+    align-items: flex-start;
+    padding: 80px 28px;
+    transform: translateX(100%);
+    transition: transform 0.35s var(--ease);
+    z-index: 70;
   }
-
   .sidebar.open {
     transform: translateX(0);
   }
-
   .sidebar-logo img {
-    height: 30px;
-    margin-bottom: 20px;
+    height: 26px;
+    margin-bottom: 30px;
   }
-
   .sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
   }
   .sidebar ul li {
-    padding: 15px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--glass-border);
   }
-  
+  .sidebar ul li button,
   .sidebar ul li a {
+    background: none;
+    border: none;
     color: #fff;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 16px;
     display: flex;
     align-items: center;
-    gap: 8px;
-  }
-
-  /* Close button inside the sidebar */
-  .hamburger-icon {
-    font-size: 1.5rem;
-    margin-right: 5px;
-  }
-
-  /* Sidebar adjustments */
-  .sidebar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: inherit;
   }
 }

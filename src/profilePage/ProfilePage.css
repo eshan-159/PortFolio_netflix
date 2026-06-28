@@ -1,20 +1,18 @@
-.profile-page {
-  display: flex;
-  align-items: center;
-  height: 75vh;
-  color: #fff;
-  background-size: cover;
-  background-position: center;
+.profile-page-v2 {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+.rows-wrap {
+  position: relative;
+  z-index: 2;
+  margin-top: -90px;
+  padding-top: 20px;
 }
 
 @media (max-width: 768px) {
-  .profile-page {
-    height: 100vh;
-    padding-bottom: 5rem;
+  .rows-wrap {
+    margin-top: -40px;
   }
 }
