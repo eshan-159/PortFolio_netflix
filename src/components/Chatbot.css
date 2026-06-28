@@ -20,6 +20,9 @@
 .chat-fab:hover {
   transform: translateY(-3px) scale(1.03);
 }
+.fab-ico {
+  display: none;
+}
 .chat-fab.hidden {
   opacity: 0;
   pointer-events: none;
@@ -287,11 +290,28 @@
     width: 100vw;
     border-left: none;
   }
-  /* keep the floating button clear of the bottom tab bar */
+  /* compact circular button, clear of the bottom tab bar (no overlap with text) */
   .chat-fab {
     right: 16px;
-    bottom: calc(72px + env(safe-area-inset-bottom, 0px));
-    padding: 12px 16px;
-    font-size: 13px;
+    bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    gap: 0;
+    font-size: 0;
+  }
+  .chat-fab .fab-dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .chat-fab .fab-label {
+    display: none;
+  }
+  .chat-fab .fab-ico {
+    display: block;
+    font-size: 22px;
   }
 }

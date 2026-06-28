@@ -100,7 +100,10 @@ const Chatbot: React.FC = () => {
         aria-label="Chat with Eshan's AI"
       >
         <span className="fab-dot" />
-        Eshan’s AI
+        <span className="fab-ico" aria-hidden="true">
+          💬
+        </span>
+        <span className="fab-label">Eshan’s AI</span>
       </button>
 
       <div className={`chat-scrim ${open ? 'open' : ''}`} onClick={() => setOpen(false)} />

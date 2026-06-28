@@ -2,14 +2,14 @@
   margin: 48px 0;
 }
 
-.skills-grid {
+.sd-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
   padding: 0 clamp(16px, 4vw, 56px);
 }
 
-.skill-card {
+.sd-card {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
@@ -18,10 +18,13 @@
   backdrop-filter: var(--glass-blur);
   transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
-.skill-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(229, 9, 20, 0.45);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+/* only apply the lift/glow on devices that actually hover (not sticky on touch) */
+@media (hover: hover) {
+  .sd-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(229, 9, 20, 0.45);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .skill-icon {
@@ -36,7 +39,7 @@
   margin-bottom: 14px;
 }
 
-.skill-card h3 {
+.sd-card h3 {
   margin: 0 0 14px;
   font-size: 16px;
   color: #fff;
@@ -141,5 +144,31 @@
 @media (max-width: 720px) {
   .extra-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* mobile: single-column skill cards so chips wrap cleanly (no tall, cramped columns) */
+@media (max-width: 768px) {
+  .sd-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0 16px;
+  }
+  .sd-card {
+    padding: 16px 18px;
+  }
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  .sd-card h3 {
+    margin-bottom: 12px;
+    font-size: 15.5px;
+  }
+  .skill-chip {
+    font-size: 12.5px;
+    padding: 6px 11px;
   }
 }

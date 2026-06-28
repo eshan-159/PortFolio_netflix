@@ -17,9 +17,9 @@ const SkillsDeck: React.FC = () => {
         <h2 className="row-heading">Skills & Toolbox</h2>
       </div>
 
-      <div className="skills-grid">
+      <div className="sd-grid">
         {skillGroups.map((g) => (
-          <div className="skill-card" key={g.category}>
+          <div className="sd-card" key={g.category}>
             <div className="skill-icon">{iconMap[g.icon]}</div>
             <h3>{g.category}</h3>
             <div className="skill-chips">
