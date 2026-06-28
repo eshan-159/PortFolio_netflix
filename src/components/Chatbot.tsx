@@ -14,7 +14,7 @@ const SUGGESTIONS = [
 ];
 
 const GREETING =
-  'Hey 👋 I’m Eshan’s AI — I can assist you on his behalf. Ask me about his projects, experience, research, or how to hire him.';
+  'Hi 👋 I’m Eshan’s AI assistant — I handle his portfolio. Ask me about his projects, experience, research, or how to reach him.';
 
 // Abuse / cost guardrails (kept low so a single visitor can't run up the bill).
 const MAX_USER_MESSAGES = 12; // per browser session
@@ -29,12 +29,43 @@ const Chatbot: React.FC = () => {
   const [sentCount, setSentCount] = useState(0);
   const lastSentRef = useRef(0);
   const bodyRef = useRef<HTMLDivElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
 
   const limitReached = sentCount >= MAX_USER_MESSAGES;
 
   useEffect(() => {
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: 'smooth' });
   }, [messages, loading, open]);
+
+  // Keep the drawer matched to the *visible* viewport so the on-screen keyboard
+  // (iOS/Android) shrinks it instead of pushing the header/input off-screen.
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const apply = () => {
+      const el = drawerRef.current;
+      if (!el) return;
+      if (open) {
+        el.style.height = `${vv.height}px`;
+        el.style.top = `${vv.offsetTop}px`;
+      } else {
+        el.style.height = '';
+        el.style.top = '';
+      }
+    };
+    apply();
+    vv.addEventListener('resize', apply);
+    vv.addEventListener('scroll', apply);
+    return () => {
+      vv.removeEventListener('resize', apply);
+      vv.removeEventListener('scroll', apply);
+      const el = drawerRef.current;
+      if (el) {
+        el.style.height = '';
+        el.style.top = '';
+      }
+    };
+  }, [open]);
 
   // lock background scroll while the drawer is open (mobile-friendly)
   useEffect(() => {
@@ -72,7 +103,7 @@ const Chatbot: React.FC = () => {
             role: 'assistant',
             content:
               data?.error ||
-              'I’m offline right now. Meanwhile, you can reach Eshan at eshan.worke@gmail.com.',
+              'I’m having trouble right now. You can reach Eshan at eshan.worke@gmail.com.',
           },
         ]);
       } else {
@@ -84,7 +115,7 @@ const Chatbot: React.FC = () => {
         {
           role: 'assistant',
           content:
-            'I need the API running (deploy on Vercel with GROQ_API_KEY). Reach Eshan at eshan.worke@gmail.com.',
+            'I’m having trouble connecting right now. You can reach Eshan at eshan.worke@gmail.com.',
         },
       ]);
     } finally {
@@ -108,13 +139,13 @@ const Chatbot: React.FC = () => {
 
       <div className={`chat-scrim ${open ? 'open' : ''}`} onClick={() => setOpen(false)} />
 
-      <aside className={`chat-drawer ${open ? 'open' : ''}`} aria-hidden={!open}>
+      <aside ref={drawerRef} className={`chat-drawer ${open ? 'open' : ''}`} aria-hidden={!open}>
         <div className="chat-header">
           <div className="chat-id">
             <span className="chat-avatar">E</span>
             <div>
-              <strong>Eshan’s AI</strong>
-              <span className="chat-status">Assisting on behalf of Eshan · Groq</span>
+              <strong>Eshan’s AI Assistant</strong>
+              <span className="chat-status">I handle Eshan’s portfolio</span>
             </div>
           </div>
           <button className="chat-min" onClick={() => setOpen(false)} aria-label="Close chat">

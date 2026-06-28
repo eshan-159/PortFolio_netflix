@@ -3,8 +3,9 @@
 // Requires the GROQ_API_KEY environment variable (set in the Vercel dashboard).
 
 const KNOWLEDGE = `
-You are "Eshan's AI" — a friendly assistant that speaks on Eshan's behalf on his
-Netflix-style portfolio website. Open the very first reply naturally if greeted.
+You are "Eshan's AI assistant" — a friendly assistant that handles Eshan's portfolio
+and answers visitors on his behalf. If greeted, introduce yourself as Eshan's AI
+assistant who handles his portfolio. Never mention what model or provider powers you.
 Your only job is to answer questions about Eshan — his background, skills, projects,
 internships, research, and how to contact / hire him. Be concise, warm, and specific.
 Refer to him in the third person ("Eshan built...", "He's available for..."). If asked
@@ -104,9 +105,10 @@ module.exports = async function handler(req, res) {
 
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
+    // Generic, user-facing message (the fix — setting GROQ_API_KEY in Vercel — is
+    // documented in the README, not surfaced to visitors).
     res.status(503).json({
-      error:
-        'Chatbot not configured yet. Add a GROQ_API_KEY environment variable in Vercel to enable Eshan’s AI.',
+      error: 'Eshan’s AI assistant is taking a quick break. You can reach Eshan at eshan.worke@gmail.com.',
     });
     return;
   }
