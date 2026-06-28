@@ -1,55 +1,66 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ProfileCard from '../components/ProfileCard';
-import blueImage from '../images/blue.png';
-import greyImage from '../images/grey.png';
+import { FaPlus, FaPencilAlt } from 'react-icons/fa';
 import './browse.css';
 
-const BG_GIF =
-  'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTZ5eWwwbjRpdWM1amxyd3VueHhteTVzajVjeGZtZGJ1dDc4MXMyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/16u7Ifl2T4zYfQ932F/giphy.gif';
+const PHOTO = '/profile-eshan.png';
 
 const Browse: React.FC = () => {
   const navigate = useNavigate();
 
-  // Eshan's portrait (drop a file at public/profile-eshan.jpg). Falls back to the
-  // abstract avatars if the file isn't present yet.
-  const profiles = [
-    {
-      name: 'recruiter',
-      label: 'Recruiter',
-      image: '/profile-eshan.jpg',
-      fallback: blueImage,
-      variant: 'mono' as const,
-      backgroundGif: BG_GIF,
-    },
-    {
-      name: 'friend',
-      label: 'Friend',
-      image: '/profile-eshan.jpg',
-      fallback: greyImage,
-      variant: 'duo' as const,
-      backgroundGif: BG_GIF,
-    },
-  ];
-
-  const handleProfileClick = (p: { name: string; backgroundGif: string }) => {
-    navigate(`/profile/${p.name}`, { state: { backgroundGif: p.backgroundGif } });
-  };
+  const go = (name: string) => navigate(`/profile/${name}`);
 
   return (
-    <div className="browse-container">
-      <p className="who-is-watching">Who's Watching?</p>
-      <div className="profiles">
-        {profiles.map((profile) => (
-          <ProfileCard
-            key={profile.name}
-            name={profile.label}
-            image={profile.image}
-            fallback={profile.fallback}
-            variant={profile.variant}
-            onClick={() => handleProfileClick(profile)}
-          />
-        ))}
+    <div className="browse-v2">
+      {/* cinematic hero (Netflix billboard style) */}
+      <div className="browse-hero">
+        <img src={PHOTO} alt="Eshan" className="browse-hero-img" />
+        <div className="browse-hero-fade" />
+        <div className="browse-hero-text">
+          <h1 className="browse-hero-title">ESHAN</h1>
+          <p className="browse-hero-sub">AI &amp; Distributed-Systems Engineer</p>
+          <div className="browse-badge">
+            <span className="top10">
+              TOP
+              <br />
+              10
+            </span>
+            <span>#1 in Engineers You Should Hire Today</span>
+          </div>
+        </div>
+      </div>
+
+      <p className="browse-pick">Choose your profile</p>
+
+      <div className="browse-grid">
+        <button className="ptile" onClick={() => go('recruiter')}>
+          <div className="ptile-img">
+            <img src={PHOTO} alt="Recruiter" className="mono" />
+          </div>
+          <span>Recruiter</span>
+        </button>
+
+        <button className="ptile" onClick={() => go('friend')}>
+          <div className="ptile-img">
+            <img src={PHOTO} alt="Friend" className="duo" />
+            <span className="tint" />
+          </div>
+          <span>Friend</span>
+        </button>
+
+        <button className="ptile decorative" onClick={() => go('recruiter')}>
+          <div className="ptile-img ghost">
+            <FaPlus />
+          </div>
+          <span>Add</span>
+        </button>
+
+        <button className="ptile decorative" onClick={() => go('recruiter')}>
+          <div className="ptile-img ghost">
+            <FaPencilAlt />
+          </div>
+          <span>Edit</span>
+        </button>
       </div>
     </div>
   );
