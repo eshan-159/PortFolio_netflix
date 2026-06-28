@@ -41,10 +41,9 @@ const Chatbot: React.FC = () => {
   // (iOS/Android) shrinks it instead of pushing the header/input off-screen.
   useEffect(() => {
     const vv = window.visualViewport;
-    if (!vv) return;
+    const el = drawerRef.current;
+    if (!vv || !el) return;
     const apply = () => {
-      const el = drawerRef.current;
-      if (!el) return;
       if (open) {
         el.style.height = `${vv.height}px`;
         el.style.top = `${vv.offsetTop}px`;
@@ -59,11 +58,8 @@ const Chatbot: React.FC = () => {
     return () => {
       vv.removeEventListener('resize', apply);
       vv.removeEventListener('scroll', apply);
-      const el = drawerRef.current;
-      if (el) {
-        el.style.height = '';
-        el.style.top = '';
-      }
+      el.style.height = '';
+      el.style.top = '';
     };
   }, [open]);
 
