@@ -35,7 +35,7 @@ const MediaCard: React.FC<MediaCardProps> = ({ item, numbered, onOpen }) => {
 
         <div className="media-info">
           <div className="media-info-head">
-            <h3>{item.title}</h3>
+            <h3>{item.short || item.title}</h3>
             <span className="play-dot" aria-hidden="true">
               ▶
             </span>

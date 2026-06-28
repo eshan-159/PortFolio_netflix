@@ -5,6 +5,7 @@ export interface CardItem {
   id: string;
   rank?: number;
   title: string;
+  short?: string; // compact name shown on the card; full title shows in the modal
   subtitle: string;
   meta: string; // short tag line e.g. "2025 · Internship"
   match?: number; // "match %" netflix flavour
@@ -45,12 +46,13 @@ export const experiences: CardItem[] = [
     id: 'texmin',
     rank: 1,
     title: 'TEXMiN — IIT (ISM) Dhanbad',
+    short: 'TEXMiN',
     subtitle: 'AI Developer Intern · AvatarGPT — Intelligent 3D AI Avatar System',
     meta: '15 Jun 2025 – 15 Jul 2025',
     maturity: 'Production',
     match: 98,
     image:
-      'https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=80',
     logo: '/imagesss/YV4g3Qoe_400x400.jpg',
     accent: '#e50914',
     tags: ['Python', 'Unity', 'PyTorch', 'Node.js', 'Whisper', 'Sarvam AI', 'Kubernetes'],
@@ -71,12 +73,13 @@ export const experiences: CardItem[] = [
     id: 'vyomchara',
     rank: 2,
     title: 'VyomChara',
+    short: 'VyomChara',
     subtitle: 'AI Developer Intern · ASL 3D Avatar Interaction Layer',
     meta: '16 Jul 2025 – 31 Oct 2025',
     maturity: 'Production',
     match: 96,
     image:
-      'https://images.unsplash.com/photo-1531951634065-9b1c1c9d8a1f?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80',
     logo: '/imagesss/1729878470252.jpg',
     accent: '#7c3aed',
     tags: ['Unreal Engine', 'JavaScript', 'Node.js', 'Accessibility'],
@@ -101,12 +104,13 @@ export const projects: CardItem[] = [
     id: 'phoenix',
     rank: 1,
     title: 'Phoenix — Self-Healing Kubernetes Platform',
+    short: 'Phoenix',
     subtitle: 'Autonomous distributed control plane that recovers itself',
     meta: 'Go · AWS EKS · GitOps',
     maturity: 'Systems',
     match: 99,
     image:
-      'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80',
     accent: '#06b6d4',
     tags: ['Go', 'Kubernetes', 'Terraform', 'Prometheus', 'OpenTelemetry', 'ArgoCD', 'AWS EKS', 'Spark', 'AWS Bedrock'],
     summary:
@@ -127,12 +131,13 @@ export const projects: CardItem[] = [
     id: 'beast',
     rank: 2,
     title: 'BEAST — Latent-Space Anomaly Detection',
+    short: 'BEAST',
     subtitle: '4-modality VAE that catches account takeover before it happens',
     meta: 'PyTorch · VAE · TPU',
     maturity: 'Research',
     match: 97,
     image:
-      'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80',
     accent: '#22c55e',
     tags: ['Python', 'PyTorch', 'VAE', 'Transformer Encoders', 'TPU', 'Anomaly Detection'],
     summary:
@@ -153,12 +158,13 @@ export const projects: CardItem[] = [
     id: 'novagemm',
     rank: 3,
     title: 'NovaGEMM — CUDA Matrix-Multiply Engine',
+    short: 'NovaGEMM',
     subtitle: 'Hand-tuned GEMM reaching near-cuBLAS throughput',
     meta: 'CUDA · C++',
     maturity: 'Systems',
     match: 95,
     image:
-      'https://images.unsplash.com/photo-1591238372338-22d30c883a86?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1200&q=80',
     accent: '#f59e0b',
     tags: ['CUDA', 'C++', 'GPU Computing', 'Performance'],
     summary:
@@ -178,6 +184,7 @@ export const projects: CardItem[] = [
     id: 'oauth',
     rank: 4,
     title: 'Secure OAuth Identity & SSO Server',
+    short: 'OAuth & SSO',
     subtitle: 'High-throughput auth with stateless JWT and social login',
     meta: 'Python · PostgreSQL · OAuth 2.0',
     maturity: 'Systems',
@@ -204,6 +211,7 @@ export const projects: CardItem[] = [
     id: 'empth',
     rank: 5,
     title: 'Empth — Local AI OS Assistant (macOS)',
+    short: 'Empth',
     subtitle: 'A voice-driven agent that actually operates your Mac',
     meta: 'Node.js · Electron · Groq',
     maturity: 'Agentic',
@@ -230,12 +238,13 @@ export const projects: CardItem[] = [
     id: 'dazza',
     rank: 6,
     title: 'Dazza — Deepfake Image Detector',
+    short: 'Dazza',
     subtitle: 'Hybrid CNN authenticity checks with real-time inference',
     meta: 'PyTorch · ResNet-50 · FastAPI',
     maturity: 'Applied ML',
     match: 92,
     image:
-      'https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1200&q=80',
     accent: '#ec4899',
     tags: ['PyTorch', 'ResNet-50', 'CBAM', 'FastAPI', 'React', 'Tailwind CSS'],
     summary:
@@ -258,6 +267,7 @@ export const projects: CardItem[] = [
 export const research: CardItem = {
   id: 'istate',
   title: 'I-State: A Self-Regulating Controller for Transformer LMs',
+  short: 'I-State',
   subtitle: 'First-author paper · Under review at ICLR',
   meta: 'LLM Safety · Mechanistic Control',
   maturity: 'Research',

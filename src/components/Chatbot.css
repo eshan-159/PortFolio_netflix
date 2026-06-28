@@ -42,31 +42,43 @@
   }
 }
 
-.chat-panel {
+/* dimmed + blurred backdrop so the drawer feels integrated with the page (Claude-style) */
+.chat-scrim {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  inset: 0;
+  z-index: 93;
+  background: rgba(4, 4, 8, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+.chat-scrim.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* right-hand drawer taking roughly half the screen */
+.chat-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
   z-index: 95;
-  width: min(380px, calc(100vw - 32px));
-  height: min(560px, calc(100vh - 48px));
+  width: min(46vw, 560px);
   display: flex;
   flex-direction: column;
   background: var(--glass-bg-strong);
-  border: 1px solid var(--glass-border-strong);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow-pop);
+  border-left: 1px solid var(--glass-border-strong);
+  box-shadow: -30px 0 90px rgba(0, 0, 0, 0.6);
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
-  transform: translateY(30px) scale(0.96);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.35s var(--ease), opacity 0.35s var(--ease);
+  transform: translateX(102%);
+  transition: transform 0.42s var(--ease);
 }
-.chat-panel.open {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  pointer-events: auto;
+.chat-drawer.open {
+  transform: translateX(0);
 }
 
 .chat-header {
@@ -233,4 +245,40 @@
 }
 .chat-input button:not(:disabled):hover {
   transform: scale(1.08);
+}
+
+.chat-limit {
+  margin-top: 6px;
+  padding: 12px 14px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #ffd7da;
+  background: rgba(229, 9, 20, 0.12);
+  border: 1px solid rgba(229, 9, 20, 0.35);
+  border-radius: 12px;
+}
+.chat-limit a {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* give the larger drawer a roomier feel */
+.chat-drawer .chat-body {
+  padding: 22px clamp(16px, 2.4vw, 34px);
+}
+.chat-drawer .bubble {
+  max-width: 88%;
+  font-size: 14px;
+}
+.chat-drawer .chat-header,
+.chat-drawer .chat-input {
+  padding-left: clamp(16px, 2.4vw, 34px);
+  padding-right: clamp(16px, 2.4vw, 34px);
+}
+
+@media (max-width: 880px) {
+  .chat-drawer {
+    width: 100vw;
+    border-left: none;
+  }
 }

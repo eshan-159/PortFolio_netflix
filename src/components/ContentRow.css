@@ -46,8 +46,11 @@
   display: flex;
   gap: 18px;
   overflow-x: auto;
+  overflow-y: hidden; /* clip only the vertical axis at the generous padding edge:
+                         prevents the row from becoming an independent vertical scroll area
+                         while leaving room for hover lift + the big rank digit */
   scroll-snap-type: x proximity;
-  padding: 30px clamp(16px, 4vw, 56px) 40px;
+  padding: 64px clamp(16px, 4vw, 56px) 64px;
   scrollbar-width: none;
 }
 .row-track::-webkit-scrollbar {

@@ -3,10 +3,11 @@
 // Requires the GROQ_API_KEY environment variable (set in the Vercel dashboard).
 
 const KNOWLEDGE = `
-You are "E-Bot", the friendly AI guide on Eshan's Netflix-style portfolio website.
+You are "Eshan's AI" — a friendly assistant that speaks on Eshan's behalf on his
+Netflix-style portfolio website. Open the very first reply naturally if greeted.
 Your only job is to answer questions about Eshan — his background, skills, projects,
 internships, research, and how to contact / hire him. Be concise, warm, and specific.
-Use first/third person naturally ("Eshan built...", "He's available for..."). If asked
+Refer to him in the third person ("Eshan built...", "He's available for..."). If asked
 something unrelated to Eshan, gently steer back. Never invent facts beyond what's below;
 if you don't know, say so and point to his resume or email. Keep answers under ~120 words
 unless asked for detail. You may use light formatting (short lists).
@@ -74,6 +75,27 @@ change. NOTE: the full paper is under non-disclosure — only discuss the abstra
    accuracy, real-time cloud inference (<2s). GitHub: https://github.com/eshan-159/DeepFake_Detector
 `;
 
+// ---- Best-effort in-memory rate limiting (per warm instance) ----
+// Caps cost from a single abusive client. Not a hard guarantee across
+// serverless instances, but combined with the client cap and Vercel's
+// own spend limits it keeps the bill predictable.
+const WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const MAX_REQ_PER_WINDOW = 20; // per IP per window
+const hits = new Map();
+
+function rateLimited(ip) {
+  const now = Date.now();
+  const rec = hits.get(ip) || { count: 0, start: now };
+  if (now - rec.start > WINDOW_MS) {
+    rec.count = 0;
+    rec.start = now;
+  }
+  rec.count += 1;
+  hits.set(ip, rec);
+  if (hits.size > 5000) hits.clear(); // crude memory guard
+  return rec.count > MAX_REQ_PER_WINDOW;
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
@@ -84,7 +106,18 @@ module.exports = async function handler(req, res) {
   if (!apiKey) {
     res.status(503).json({
       error:
-        'Chatbot not configured. Add a GROQ_API_KEY environment variable in Vercel to enable E-Bot.',
+        'Chatbot not configured yet. Add a GROQ_API_KEY environment variable in Vercel to enable Eshan’s AI.',
+    });
+    return;
+  }
+
+  const ip =
+    (req.headers['x-forwarded-for'] || '').split(',')[0].trim() ||
+    req.socket?.remoteAddress ||
+    'unknown';
+  if (rateLimited(ip)) {
+    res.status(429).json({
+      error: 'Too many requests — please slow down. For more, email eshan.worke@gmail.com.',
     });
     return;
   }
@@ -94,11 +127,17 @@ module.exports = async function handler(req, res) {
     if (typeof body === 'string') body = JSON.parse(body || '{}');
     const userMessages = Array.isArray(body?.messages) ? body.messages : [];
 
-    // Keep only the last 10 turns, sanitize roles/content.
+    // Reject oversized payloads outright.
+    if (userMessages.length > 30) {
+      res.status(400).json({ error: 'Conversation too long. Please start over.' });
+      return;
+    }
+
+    // Keep only the last 8 turns, sanitize roles/content, cap each message length.
     const trimmed = userMessages
-      .slice(-10)
+      .slice(-8)
       .filter((m) => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
-      .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
+      .map((m) => ({ role: m.role, content: m.content.slice(0, 600) }));
 
     const messages = [{ role: 'system', content: KNOWLEDGE }, ...trimmed];
 
@@ -112,7 +151,7 @@ module.exports = async function handler(req, res) {
         model: 'llama-3.3-70b-versatile',
         messages,
         temperature: 0.5,
-        max_tokens: 400,
+        max_tokens: 320,
       }),
     });
 
